@@ -120,23 +120,24 @@ bot.onText(/\/sendpic/, (msg) => {
   bot.sendPhoto(msg.chat.id, "https://www.somesite.com/image.jpg");
 });
 
-
-
-bot.on('message', (msg) => {
-    let location = "location";
-    if (msg.text.indexOf(location) === 0) {
-        bot.sendLocation(msg.chat.id,48.2333, 38.2114);
-        bot.sendMessage(msg.chat.id, "Here is the point");
-
-    }
+bot.on("message", (msg) => {
+  let location = "location";
+  if (msg.text.indexOf(location) === 0) {
+    bot.sendLocation(msg.chat.id, 48.2333, 38.2114);
+    bot.sendMessage(msg.chat.id, "Here is the point");
+  }
 });
 
-
-bot.on('message', (msg) => {
-
-    var bye = "bye";
-    if (msg.text.toString().toLowerCase().includes(bye)) {
+bot.on("message", (msg) => {
+  var bye = "bye";
+  if (msg.text.toString().toLowerCase().includes(bye)) {
     bot.sendMessage(msg.chat.id, "Have a nice day " + msg.from.first_name);
-    }
-    
-    });
+  }
+});
+
+bot.on("message", (msg) => {
+  var what = "idiot";
+  if (msg.text.includes(what)) {
+    bot.kickChatMember(msg.chat.id, msg.from.id);
+  }
+});
