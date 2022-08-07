@@ -129,15 +129,22 @@ bot.on("message", (msg) => {
 });
 
 bot.on("message", (msg) => {
-  var bye = "bye";
+  let bye = "bye";
   if (msg.text.toString().toLowerCase().includes(bye)) {
     bot.sendMessage(msg.chat.id, "Have a nice day " + msg.from.first_name);
   }
 });
 
 bot.on("message", (msg) => {
-  var what = "idiot";
-  if (msg.text.includes(what)) {
-    bot.kickChatMember(msg.chat.id, msg.from.id);
+  let what = "rbt";
+
+  if (msg.text.toString().toLowerCase().includes(what)) {
+    try {
+      bot.sendMessage(msg.chat.id, `RBT`);
+      bot.kickChatMember(msg.chat.id, msg.from.id);
+    } catch (err) {
+      console.log(`[!] ERROR: !:RFD:S!!!!!!!!!!!!!!!! ${err}`);
+      // bot.sendMessage(msg.chat.id, `Error: ${err}`);
+    }
   }
 });
